@@ -40,7 +40,7 @@ for j in range(1, 5):
 
         imageNumber = (i+1)*j
 
-        FOLDER = "./images/" + str(categories[category])
+        FOLDER = "./images/" + str(categories[category].decode("utf-8"))
         if not os.path.exists(FOLDER):
             os.makedirs(FOLDER, exist_ok=True)
 
