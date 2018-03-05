@@ -29,14 +29,15 @@ def saveCifarImage(array, path, file):
     # save to PNG file
     return cv2.imwrite(path+file+".png", array)
 
-imgarray, lblarray = extractImagesAndLabels(cifarFolder, "data_batch_1")
-
 categories = extractCategories(cifarFolder, "batches.meta")
 
-for i in range(0,len(imgarray)):
-    category = lblarray[i].asnumpy()
-    category = (int)(category[0])
-    FOLDER = "./images/" + str(categories[category])
-    if not os.path.exists(FOLDER)
-        os.makedirs(FOLDER, exist_ok=True)
-    saveCifarImage(imgarray[i], FOLDER + "/", "image"+(str)(i))
+for j in range(1, 5):
+    imgarray, lblarray = extractImagesAndLabels(cifarFolder, "data_batch_" + str(j))
+
+    for i in range(0, len(imgarray)):
+        category = lblarray[i].asnumpy()
+        category = (int)(category[0])
+        FOLDER = "./images/" + str(categories[category])
+        if not os.path.exists(FOLDER)
+            os.makedirs(FOLDER, exist_ok=True)
+        saveCifarImage(imgarray[i], FOLDER + "/", "image"+(str)(i))
