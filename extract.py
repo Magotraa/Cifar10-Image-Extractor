@@ -37,9 +37,11 @@ for j in range(1, 5):
     for i in range(0, len(imgarray)):
         category = lblarray[i].asnumpy()
         category = (int)(category[0])
-        
+
+        imageNumber = (i+1)*j
+
         FOLDER = "./images/" + str(categories[category])
         if not os.path.exists(FOLDER):
             os.makedirs(FOLDER, exist_ok=True)
 
-        saveCifarImage(imgarray[i], FOLDER + "/", "image"+(str)(i))
+        saveCifarImage(imgarray[i], FOLDER + "/", "image"+(str)(imageNumber))
