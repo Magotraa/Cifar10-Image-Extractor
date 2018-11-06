@@ -4,10 +4,11 @@ import pickle
 import cv2
 import os
 
-cifarFolder = "cifar-10-batches-py/"
+cifarFolder = "cifar-10-batches-py"
 
 def extractImagesAndLabels(path, file):
-    f = open(path+file, 'rb')
+    fullpath = os.path.join(path, file)
+    f = open(fullpath, 'rb')
     dict = pickle.load(f, encoding='bytes')
     images = dict[b'data']
     images = np.reshape(images, (10000, 3, 32, 32))
@@ -17,7 +18,8 @@ def extractImagesAndLabels(path, file):
     return imagearray, labelarray
 
 def extractCategories(path, file):
-    f = open(path+file, 'rb')
+    fullpath = os.path.join(path, file)
+    f = open(fullpath, 'rb')
     dict = pickle.load(f, encoding='bytes')
     return dict[b'label_names']
 
